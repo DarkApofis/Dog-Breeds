@@ -12,14 +12,18 @@ export const getBreeds = () => {
 
 export const getBreedByName = (breed) => {
     return async function(dispatch){
-            const response = await axios.get(`/dogs/?name=${breed}`)
-            if(response.status === 200){
+            try {
+                const response = await axios.get(`/dogs/?name=${breed}`)
                 const {data} = response;
                 dispatch({type: 'BREEDS_BY_NAME', payload: data})
+            } catch (error) {
+                dispatch({type: 'BREEDS_BY_NAME', payload: 'error'})
             }
-            else{
-                dispatch({type: 'BREEDS_BY_NAME', payload: []})
-            }
+            // if(response.status === 200){
+            // }
+            // else{
+            //     dispatch({type: 'BREEDS_BY_NAME', payload: []})
+            // }
     }
 }
 

@@ -5,6 +5,7 @@ const Cards = lazy(() =>  {
     return import("../Cards")
 });
 import usePagination from "../../hooks/usePagination";
+import { H1 } from "./styles";
 
 export default function CardsContainer(){
     const {
@@ -16,11 +17,11 @@ export default function CardsContainer(){
     } = usePagination()
     
 
-    // if(breeds.length === 0){
-    //     return (
-    //         <h1>Who let the dogs out?</h1>
-    //     )
-    // }
+    if(breeds === 'error'){
+        return (
+            <H1>Who let the dogs out?</H1>
+        )
+    }
 
 
     return(
